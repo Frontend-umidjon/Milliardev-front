@@ -6,8 +6,7 @@ import logg from "../assets/milliardev.jpg";
 const Footer: React.FC = () => {
   return (
     <footer className="bg-[#1E2230] text-gray-300 pt-12 pb-8 mt-20">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
-        {/* Logo and About */}
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
         <div>
           <img src={logg} alt="Milliardev IT" className="w-24 mb-4" />
           <p className="text-gray-400 mb-4">
@@ -21,13 +20,18 @@ const Footer: React.FC = () => {
             >
               <FaTelegram size={22} />
             </a>
-            <FaInstagram size={22} />
-            <FaYoutube size={22} />
-            <FaFacebook size={22} />
+            <a href="#" aria-label="Instagram">
+              <FaInstagram size={22} />
+            </a>
+            <a href="#" aria-label="YouTube">
+              <FaYoutube size={22} />
+            </a>
+            <a href="#" aria-label="Facebook">
+              <FaFacebook size={22} />
+            </a>
           </div>
         </div>
 
-        {/* Useful Links */}
         <div>
           <h3 className="text-white font-semibold mb-4">Полезные ссылки</h3>
           <ul className="space-y-2 text-gray-400">
@@ -44,7 +48,6 @@ const Footer: React.FC = () => {
           </ul>
         </div>
 
-        {/* Help */}
         <div>
           <h3 className="text-white font-semibold mb-4">Помощь</h3>
           <ul className="space-y-2 text-gray-400">
@@ -69,21 +72,15 @@ const Footer: React.FC = () => {
           </ul>
         </div>
 
-        {/* Policies */}
         <div>
           <h3 className="text-white font-semibold mb-4">Документы</h3>
           <ul className="space-y-2 text-gray-400">
-            <li>
-                Политика конфиденциальности
-            </li>
-            <li>
-                Условия использования
-            </li>
+            <li>Политика конфиденциальности</li>
+            <li>Условия использования</li>
           </ul>
         </div>
       </div>
 
-      {/* Bottom */}
       <div className="text-center text-gray-500 text-sm mt-10 border-t border-gray-700 pt-4">
         © {new Date().getFullYear()} Milliardev IT Company. Все права защищены.
       </div>

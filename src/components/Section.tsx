@@ -1,5 +1,3 @@
-// components/PortfolioGrid.tsx
-
 import React from "react";
 import TextEffect from "./TextEffect";
 import { useGetProjectsQuery } from "../redux/api/projects";
@@ -14,7 +12,7 @@ const PortfolioGrid = () => {
   );
 
   return (
-    <div className="bg-[rgb(18,23,35)] text-white py-10 text-center">
+    <div className="bg-[rgb(18,23,35)] text-white py-10 text-center px-4">
       <TextEffect text={"Портфолио IT-компании Milliardev"} />
       {isLoading ? (
         <div className="flex justify-center py-10">
@@ -22,14 +20,14 @@ const PortfolioGrid = () => {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {projects.slice(0, 3).map((item: any) => (
               <PortfolioCard key={item._id} {...item} />
             ))}
           </div>
 
-          {projects.length > 3 ? (
-            <div className="mt-8">
+          {projects.length > 3 && (
+            <div className="mt-8 flex justify-center">
               <Link
                 to="/projects"
                 className="inline-block bg-yellow-500 text-black px-6 py-3 rounded-md font-semibold hover:bg-yellow-600 transition"
@@ -37,8 +35,6 @@ const PortfolioGrid = () => {
                 Показать больше
               </Link>
             </div>
-          ) : (
-            <></>
           )}
         </>
       )}

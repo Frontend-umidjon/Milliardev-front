@@ -79,7 +79,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <ul className="md:hidden bg-gray-100 dark:bg-gray-900 p-4 space-y-2 text-[18px] font-medium">
+        <ul className="md:hidden bg-gray-100 dark:bg-gray-900 p-4 space-y-2 text-[18px] font-medium text-center text-black dark:text-white">
           <li className="hover:text-blue-500 cursor-pointer">
             <Link to={"/"}>Главная</Link>
           </li>

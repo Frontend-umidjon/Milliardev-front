@@ -1,83 +1,88 @@
-import { motion } from "framer-motion";
-import { Button } from "./ui/button";
-import TextEffect from "./TextEffect";
-import { Link } from "react-router-dom";
 
-const services = [
-  {
-    title: "Создание веб-сайтов",
-    description:
-      "Мы создаем современные, быстрые и адаптивные веб-сайты для вашего бизнеса. У нас есть опыт в разработке лендингов, корпоративных сайтов и интернет-магазинов.",
-    image: "https://cdn-icons-png.flaticon.com/512/1006/1006771.png", // Web development icon
-  },
-  {
-    title: "Разработка Telegram-ботов",
-    description:
-      "Автоматизированные Telegram-боты: прием заказов, интеграция платежных систем, создание и развитие интерактивного взаимодействия с пользователями.",
-    image: "https://cdn-icons-png.flaticon.com/512/2111/2111646.png", // Telegram bot icon
-  },
-  {
-    title: "Услуги графического дизайна",
-    description:
-      "Создание логотипов, брендинг, рекламные баннеры и другие графические работы. Мы поможем сделать ваш бизнес более привлекательным с помощью креативного и современного дизайна.",
-    image: "https://cdn-icons-png.flaticon.com/512/1829/1829585.png", // Graphic design icon
-  },
-];
+import { motion } from 'framer-motion';
 
-export default function Services() {
+const Services = () => {
   return (
-    <div className="bg-[rgb(18,23,35)] text-white py-20 px-8 text-center relative">
-      <TextEffect text={"Наши услуги"} />
-      <div className="flex flex-col md:flex-row gap-8 justify-center relative z-10">
-        {services.map((service, index) => (
+    <div className="bg-gray-900 text-white py-12 md:py-20">
+      <div className="max-w-screen-lg mx-auto px-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8">
+          Наши услуги
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
           <motion.div
-            key={index}
-            whileHover={{ scale: 1.05 }}
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-            className="bg-[#161b22] p-8 rounded-xl w-[350px] shadow-xl border border-gray-700 flex flex-col justify-between"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="w-full sm:w-80 md:w-[320px] bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col items-center"
           >
-            <div className="flex flex-col items-start">
-              <div className="flex gap-2 mb-4">
-                {Array(5)
-                  .fill("⭐")
-                  .map((star, i) => (
-                    <span key={i} className="text-yellow-500">
-                      {star}
-                    </span>
-                  ))}
-              </div>
-              <p className="text-gray-300 mb-4 text-left text-[15px] leading-relaxed">
-                {service.description}
-              </p>
-              <div className="border-b border-gray-700 w-full my-4"></div>
-              <div className="flex items-center gap-4">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-16 h-16 rounded-full"
-                />
-                <div>
-                  <h3 className="text-lg font-semibold text-white">
-                    {service.title}
-                  </h3>
-                </div>
-              </div>
-            </div>
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png"
+              alt="Веб-разработка"
+              className="w-16 h-16 md:w-20 md:h-20 mb-4"
+            />
+            <h3 className="text-xl md:text-2xl font-semibold mb-2 text-center">
+              Веб-разработка
+            </h3>
+            <p className="text-center text-sm md:text-base text-gray-300 mb-4">
+              Разработка современных и адаптивных веб-сайтов с использованием последних технологий.
+            </p>
           </motion.div>
-        ))}
-      </div>
-      <div className="mt-10 flex justify-center">
-        <Link to="/services">
-          <Button
-            variant="outline"
-            className="border-white text-white bg-rgb(18,23,35) hover:bg-white hover:text-blue-900 transition-all px-8 py-6 text-lg font-semibold uppercase tracking-widest border-2"
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="w-full sm:w-80 md:w-[320px] bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col items-center"
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"
+              alt="Мобильные приложения"
+              className="w-16 h-16 md:w-20 md:h-20 mb-4"
+            />
+            <h3 className="text-xl md:text-2xl font-semibold mb-2 text-center">
+              Мобильные приложения
+            </h3>
+            <p className="text-center text-sm md:text-base text-gray-300 mb-4">
+              Создание кроссплатформенных мобильных приложений под iOS и Android.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="w-full sm:w-80 md:w-[320px] bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col items-center"
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/1829/1829585.png"
+              alt="UX/UI дизайн"
+              className="w-16 h-16 md:w-20 md:h-20 mb-4"
+            />
+            <h3 className="text-xl md:text-2xl font-semibold mb-2 text-center">
+              UX/UI дизайн
+            </h3>
+            <p className="text-center text-sm md:text-base text-gray-300 mb-4">
+              Разработка пользовательских интерфейсов и улучшение опыта взаимодействия.
+            </p>
+          </motion.div>
+
+        </div>
+
+        <div className="flex justify-center mt-12">
+          <a
+            href="#"
+            className="inline-block px-6 py-3 md:px-8 md:py-4 text-sm md:text-base font-semibold bg-blue-600 hover:bg-blue-700 rounded-full"
           >
             Подробнее
-          </Button>
-        </Link>
+          </a>
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default Services;
