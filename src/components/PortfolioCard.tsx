@@ -65,6 +65,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ name, image, _id }) => {
   const navigate = useNavigate();
   const [telegramUser, setTelegramUser] = useState<TelegramUser | null>(null);
   const [sendTelegramMessage, { isLoading }] = useSendTelegramMessageMutation();
+  const [showUserId, setShowUserId] = useState(false);
 
   // ✅ Telegram foydalanuvchisini olish
   useEffect(() => {
@@ -80,11 +81,30 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ name, image, _id }) => {
       return;
     }
 
+    // Telegram web app orqali kirilganda, foydalanuvchi ID sini ko'rsatish
+    const isTelegramWebApp = (window as any).Telegram?.WebApp;
+    if (isTelegramWebApp) {
+      setShowUserId(true);
+      // 3 soniyadan keyin ID ni yashirish va keyingi sahifaga o'tish
+      setTimeout(() => {
+        setShowUserId(false);
+        navigateToProject();
+      }, 3000);
+    } else {
+      // Oddiy saytdan kirilganda to'g'ridan-to'g'ri loyiha sahifasiga o'tish
+      navigateToProject();
+    }
+  };
+
+  const navigateToProject = async () => {
     try {
-      await sendTelegramMessage({
-        userId: telegramUser.id,
-        projectId: _id,
-      }).unwrap();
+      // Telegram foydalanuvchi mavjud bo'lsagina xabar yuborish
+      if (telegramUser && telegramUser.id) {
+        await sendTelegramMessage({
+          userId: telegramUser.id, // Endi bu aniq number tipida
+          projectId: _id,
+        }).unwrap();
+      }
 
       navigate(`/projects/${_id}`);
     } catch (error) {
@@ -106,6 +126,13 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ name, image, _id }) => {
         <h3 className="text-xl font-bold text-white mb-3 text-center">
           {name}
         </h3>
+
+        {showUserId && telegramUser && (
+          <div className="bg-yellow-500 text-black px-4 py-2 rounded-md mb-3 text-center">
+            <p className="font-semibold">Sizning ID: {telegramUser.id}</p>
+          </div>
+        )}
+
         <button
           onClick={handleClick}
           className="bg-yellow-500 text-black px-5 py-2 rounded-md font-semibold hover:bg-yellow-600 transition"
