@@ -77,7 +77,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ name, image, _id }) => {
 
   const handleClick = async () => {
     if (!telegramUser) {
-      alert("Telegram foydalanuvchi ma'lumoti topilmadi.");
+      alert(`Telegram foydalanuvchi ma'lumoti topilmadi.${telegramUser}`);
       return;
     }
 
