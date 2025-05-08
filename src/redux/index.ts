@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { mainApi } from './api'
+import telegramSlice from './feautures/telegram.slice';
 // import auth from './feautures/auth.slice'
 // ...
 
 export const store = configureStore({
   reducer: {
     [mainApi.reducerPath]: mainApi.reducer,
+    telegram: telegramSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(mainApi.middleware),
