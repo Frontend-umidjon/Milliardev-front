@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import ProjectDetail from './pages/ProjectDetail'
 import Projects from './pages/Projects'
 import Services from './pages/Services'
+
 // import Portfoli from './pages/Partfoli'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      
     </>
   );
 }
